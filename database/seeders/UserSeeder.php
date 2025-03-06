@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class UserSeeder extends Seeder
 {
@@ -14,13 +15,12 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
-            'dni' => '12345678', // Puedes poner un DNI de ejemplo
-            'name' => 'Kevin',
-            'last_name' => 'Apellido', // Puedes poner un apellido de ejemplo
-            'email' => 'kevin@gmail.com',
-            'phone' => '123456789', // Puedes poner un número de teléfono de ejemplo
-            'password' => Hash::make('kevin12345'),
-        ]);
+        $role = Role::create(['name' => 'admin']);
+        $role = Role::create(['name' => 'recepcionista']);
+        
+        User::factory()->create([
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('12345678'),
+        ])->assignRole('admin');
     }
 }
