@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('memberships', function (Blueprint $table) {
             $table->id();
-            $table->string('membership_type');
-            $table->string('membership_state');
+            $table->enum('membership_type', ['Mensual', 'Anual']);
+            $table->enum('membership_state', ['Activo', 'Inactivo']);
             $table->date('membership_start');
             $table->date('membership_end');
             $table->timestamps();

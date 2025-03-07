@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\LoginController;
 use App\Livewire\CreateClient;
+use App\Livewire\EditClient;
+use App\Livewire\RenewalMembership;
 use App\Livewire\ShowClients;
 use Illuminate\Support\Facades\Route;
 
@@ -12,6 +14,10 @@ Route::get('/', function () {
 Route::get('/clients', ShowClients::class)->name('clients');
 
 Route::get('/clients/create', CreateClient::class)->name('clients.create');
+
+Route::get('/clients/edit/{id}', EditClient::class)->name('clients.edit');
+
+Route::get('/clients/renewal/{id}', RenewalMembership::class)->name('clients.renewal');
 
 Route::post('/login-register', [LoginController::class, 'register'])->name('register_login');
 

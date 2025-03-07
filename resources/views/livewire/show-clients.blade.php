@@ -21,19 +21,19 @@
                             <thead class="bg-gray-50 ">
                                 <tr>
                                     <th scope="col"
-                                        class="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                                        class="py-3.5 px-4 text-sm font-normal text-center rtl:text-right text-gray-500 ">
                                         <div class="flex items-center gap-x-3">
                                             <span>Nombre</span>
                                         </div>
                                     </th>
 
                                     <th scope="col"
-                                        class="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                                        class="px-12 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 ">
                                         <span>Email</span>
                                     </th>
 
                                     <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                                        class="px-4 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 ">
                                         <button class="flex items-center gap-x-2">
                                             <span>Telefono</span>
                                         </button>
@@ -42,23 +42,23 @@
 
 
                                     <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                                        class="px-4 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 ">
                                         Tipo de membresia</th>
 
                                     <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                                        class="px-4 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 ">
                                         Fecha de inicio</th>
 
                                     <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                                        class="px-4 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 ">
                                         Fecha de fin</th>
 
                                     <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                                        class="px-4 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 ">
                                         Estado</th>
 
                                     <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 ">
+                                        class="px-4 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 ">
                                         Acciones</th>
                                 </tr>
                             </thead>
@@ -98,7 +98,7 @@
                                         </td>
 
                                         
-                                            @if ($client->membership->membership_state == 'active')
+                                            @if ($client->membership->membership_state == 'Activo')
                                                 <td class="px-4 py-4 text-md font-medium text-gray-700 whitespace-nowrap">
                                                      <div
                                                         class="inline-flex items-center px-3 py-1 rounded-full gap-x-2 bg-emerald-100/60 ">
@@ -124,7 +124,7 @@
 
                                 <td class="px-4 py-4 text-sm whitespace-nowrap">
                                     <div class="flex items-center gap-x-6">
-                                        <a href="#"
+                                        <a href="{{ route('clients.edit', $client->id) }}"
                                             class="text-yellow-500 transition-colors duration-200  hover:text-gray-500 focus:outline-none">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke-width="1.5" stroke="currentColor" class="w-7 h-7">
@@ -134,7 +134,7 @@
                                             </svg>
                                         </a>
 
-                                        <a href="#"
+                                        <a href="{{route('clients.renewal', $client->id)}}"
                                             class="text-emerald-500 transition-colors duration-200 hover:text-gray-500 focus:outline-none">
                                             <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"
                                                 stroke="currentColor" stroke-width="0"

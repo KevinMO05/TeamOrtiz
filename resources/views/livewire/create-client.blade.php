@@ -1,6 +1,6 @@
 <div>
     <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 py-6">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4">
+        <div class="bg-gray-50 overflow-hidden shadow-sm sm:rounded-lg p-10">
             <h1 class="text-xl font-semibold">Registrar Cliente</h1>
             {{-- Nombre --}}
             <div class="my-4">
@@ -37,17 +37,18 @@
 
             <div class="bg-gray-300 w-full h-1 my-10 rounded-lg"></div>
 
-
+            
             <h1 class="text-xl font-semibold">Registrar Membresia</h1>
-            {{-- Tipo de membresia --}}
+
+
             <div class="my-4 grid grid-cols-2 gap-4">
                 <div class="colspan-1">
                     <x-label value="Tipo de membresia" class="text-sm" />
                     <select name="type" wire:model.live="membership_type" id=""
                         class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm text-gray-500 w-full form-control text-md">
                         <option value="">Seleccione el tipo de membresia</option>
-                        <option value="1">Mensual</option>
-                        <option value="2">Anual</option>
+                        <option value="Mensual">Mensual</option>
+                        <option value="Anual">Anual</option>
                     </select>
                     <x-input-error for="membership_type" class="mt-2" />
                 </div>
@@ -56,27 +57,22 @@
                     <select name="state" wire:model.live="membership_state" id=""
                         class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm text-gray-500 w-full form-control text-md">
                         <option value="">Seleccione el estado de membresia</option>
-                        <option value="1">Activo</option>
-                        <option value="2">Inactivo</option>
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
                     </select>
                     <x-input-error for="membership_state" class="mt-2" />
                 </div>
             </div>
 
             <div class="my-4 grid grid-cols-2 gap-4">
-                <div class="colspan-1">
+                <div class="colspan-2">
                     {{-- DNI --}}
                     <x-label value="Fecha de inicio" class="text-sm" />
                     <x-input type="date" class="w-full form-control text-md text-gray-500" placeholder="Ingrese la fecha de inicio de la membresía"
                         wire:model.live="membership_start" />
                     <x-input-error for="membership_start" class="mt-2" />
                 </div>
-                <div class="colspan-1">
-                    <x-label value="Fecha de fin" class="text-sm" />
-                    <x-input type="date" class="w-full form-control text-md text-gray-500" placeholder="Ingrese la fecha de fin de la membresía"
-                        wire:model.live="membership_end" />
-                    <x-input-error for="membership_end" class="mt-2" />
-                </div>
+                
             </div>
             <div class="flex">
                 <x-button class="ml-auto font-normal bg-sky-900 mt-5 hover:bg-sky-700" wire:click="save" wire:loading.attr="disabled"
