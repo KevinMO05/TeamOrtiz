@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>Team Ortiz | Gimnasio</title>
+        <link rel="icon" href="{{ asset('img/gym.svg') }}" type="image/svg+xml">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -13,6 +14,7 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 
         <!-- Styles -->
         @livewireStyles
@@ -21,21 +23,27 @@
         <x-banner />
 
         <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
-
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
+            <div class="flex">
+                <div>
+                    <x-sidebar />
+                </div>
+                <div class="w-full h-screen overflow-y-auto bg-white">
+                    @livewire('navigation-menu')
+                    @if(request()->routeIs('dashboard'))
+                    <div class="flex flex-col justify-center items-center">
+                        <img src="img/mancuerna.png" alt="" width="40%" class="mx-auto">
+                        <h1 class="mt-7 text-2xl ">Bienvenido,  <span class="bg-clip-text font-bold text-transparent bg-gradient-to-r from-[#33a346] to-sky-700">{{ Auth::user()->name}}</span></h1>
                     </div>
-                </header>
-            @endif
+                    @endif
+                    <main>
+                        {{ $slot }}
+                    </main>
+                </div>
+            </div>
+            
 
             <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+            
         </div>
 
         @stack('modals')

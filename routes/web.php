@@ -1,11 +1,15 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Livewire\ShowClients;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
+//Rutas para clientes y membresias
+Route::get('/clients', ShowClients::class)->name('clients');
+
 Route::post('/login-register', [LoginController::class, 'register'])->name('register_login');
 
 
