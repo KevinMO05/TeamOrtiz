@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('membership_type');
             $table->string('membership_state');
-            $table->time('membership_start');
-            $table->time('membership_end');
+            $table->date('membership_start');
+            $table->date('membership_end');
             $table->timestamps();
         });
     }
