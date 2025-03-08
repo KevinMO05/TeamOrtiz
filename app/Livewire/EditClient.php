@@ -27,6 +27,7 @@ class EditClient extends Component
     public function mount(Client $id)
     {
         $this->client = Client::find($id)->first();
+        
         $this->name = $this->client->user->name;
         $this->email = $this->client->user->email;
         $this->phone = $this->client->user->phone;

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Livewire\ChangePlan;
 use App\Livewire\CreateClient;
 use App\Livewire\EditClient;
 use App\Livewire\RenewalMembership;
@@ -18,6 +19,8 @@ Route::get('/clients/create', CreateClient::class)->name('clients.create');
 Route::get('/clients/edit/{id}', EditClient::class)->name('clients.edit');
 
 Route::get('/clients/renewal/{id}', RenewalMembership::class)->name('clients.renewal');
+
+Route::get('/clients/change-plan/{id}', ChangePlan::class)->name('clients.change-plan');
 
 Route::post('/login-register', [LoginController::class, 'register'])->name('register_login');
 

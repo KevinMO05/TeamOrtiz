@@ -51,12 +51,12 @@
                        Dar de baja
                     </a>
                     
-                    
+                   
                     <a href={{route('clients.renewal', $client->id)}} class="colspan-1  bg-emerald-500 p-3 rounded-md cursor-pointer hover:bg-emerald-600 m-3 text-white font-semibold text-center">
                        Renovar membresia
                     </a>
 
-                    <a class="colspan-1  bg-yellow-500 p-3 rounded-md cursor-pointer hover:bg-yellow-600 m-3 text-white font-semibold text-center">
+                    <a  href={{route('clients.change-plan', $client->id)}}  class="colspan-1  bg-yellow-500 p-3 rounded-md cursor-pointer hover:bg-yellow-600 m-3 text-white font-semibold text-center">
                         Cambiar de plan
                      </a>
                 </div>

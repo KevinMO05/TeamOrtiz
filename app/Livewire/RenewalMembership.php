@@ -21,9 +21,10 @@ class RenewalMembership extends Component
         'membership_start' => 'fecha de inicio de membresía',
         
     ];
-    public function mount($id)
+    public function mount(Client $id)
     {
         $this->client = Client::find($id)->first();
+        
         $this->membership_type = $this->client->membership->membership_type;
         $this->membership_state = $this->client->membership->membership_state;
         $this->membership_start = $this->client->membership->membership_start;
