@@ -2,10 +2,10 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 py-6">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-4">
             <div class="flex justify-between items-center">
-                <h1 class="text-xl font-semibold">Suplementos</h1>
-                <a href="{{ route('supplements.create') }}"
+                <h1 class="text-xl font-semibold">Maquinas</h1>
+                <a href="{{ route('machines.create') }}"
                     class="inline-flex items-center px-4 py-2 bg-sky-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-sky-800 focus:bg-sky-700 active:bg-sky-900 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 transition ease-in-out duration-150">
-                    Agregar suplemento
+                    Agregar maquina
                 </a>
             </div>
             <section class="container px-4 mx-auto">
@@ -16,7 +16,7 @@
                             placeholder="Ingrese el nombre del respuesto que quiere buscar" />
                     </div>
 
-                    @if ($supplements->count())
+                    @if ($machines->count())
                         <table class="min-w-full divide-y divide-gray-200 ">
                             <thead class="bg-gray-50 ">
                                 <tr>
@@ -28,24 +28,6 @@
                                     </th>
 
                                     <th scope="col"
-                                        class="px-12 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 ">
-                                        <span>Proveedor</span>
-                                    </th>
-
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 ">
-                                        <button class="flex items-center gap-x-2">
-                                            <span>Marca</span>
-                                        </button>
-                                    </th>
-
-
-
-                                    <th scope="col"
-                                        class="px-4 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 ">
-                                        Stock</th>
-
-                                    <th scope="col"
                                         class="px-4 py-3.5 text-sm font-normal text-center rtl:text-right text-gray-500 ">
                                         Acciones</th>
 
@@ -53,7 +35,7 @@
                             </thead>
 
                             <tbody class="bg-white divide-y divide-gray-200 ">
-                                @foreach ($supplements as $supplement)
+                                @foreach ($machines as $machine)
                                     <tr>
                                         <td class="px-4 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
                                             <div class="inline-flex items-center gap-x-3">
@@ -61,29 +43,17 @@
 
                                                     <div>
                                                         <h2 class="font-medium text-gray-800  ">
-                                                            {{ $supplement->name }}</h2>
+                                                            {{ $machine->name }}</h2>
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
 
-                                        <td
-                                            class="px-12 py-4 text-sm font-medium text-center text-gray-700 whitespace-nowrap">
-                                            {{ $supplement->supplier->name }}
-                                        </td>
-
-
-                                        <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                            {{ $supplement->brand->name }}
-                                        </td>
-
-                                        <td class="px-4 py-4 text-sm text-center text-gray-500  whitespace-nowrap">
-                                            {{ $supplement->stock }}</td>
-
+                                        
 
                                         <td class="px-4 py-4 text-sm whitespace-nowrap ">
                                             <div class="flex items-center justify-center gap-x-6">
-                                                <a href="{{ route('supplements.edit', $supplement->id) }}"
+                                                <a href="{{route('machines.edit', $machine)}}"
                                                     class="text-yellow-500 transition-colors duration-200  hover:text-gray-500 focus:outline-none">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                         viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -94,7 +64,7 @@
                                                                 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
                                                     </svg>
                                                 </a>
-                                                <a href="{{Route('supplements.add-code',$supplement->id)}}"
+                                                <a href="{{route('machines.add-code', $machine)}}"
                                                     class="text-emerald-500 transition-colors duration-200   hover:text-gray-500 focus:outline-none">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                         viewBox="0 0 128 128" stroke-width="4" stroke="currentColor"

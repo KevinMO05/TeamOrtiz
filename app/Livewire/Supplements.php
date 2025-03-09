@@ -2,12 +2,16 @@
 
 namespace App\Livewire;
 
+use App\Models\Supplement;
 use Livewire\Component;
 
 class Supplements extends Component
 {
+    public $search;
     public function render()
     {
-        return view('livewire.supplements')->layout('layouts.app');
+        $supplements = Supplement::where('name', 'like', '%' . $this->search . '%')->paginate(10);
+        
+        return view('livewire.supplements', compact('supplements'))->layout('layouts.app');
     }
 }

@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('supplements_codes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('supplements_id')->constrained('supplements');
-            $table->bigInteger('code'); 
+            $table->string('code'); 
             $table->date('purchase_date');
             $table->date('expiration_date');
-            $table->string('state');
+            $table->enum('state', ['Dañado', 'Disponible', 'Vendido']);
             $table->timestamps();
         });
     }
