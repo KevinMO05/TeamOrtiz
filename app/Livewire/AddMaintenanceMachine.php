@@ -26,7 +26,7 @@ class AddMaintenanceMachine extends Component
     }
 
     public function save(){
-        if(!(MaintenanceMachine::where('machine_code_id', $this->code->id)->count()>1)){
+        if(!(MaintenanceMachine::where('machine_code_id', $this->code->id)->count()>=1)){
             MaintenanceMachine::create([
                 'machine_code_id' => $this->code->id,
                 'last_maintenance_date' => $this->last_maintenance_date,
@@ -51,6 +51,7 @@ class AddMaintenanceMachine extends Component
                 'last_maintenance_date' => $this->last_maintenance_date,
                 'next_maintenance' => $this->next_maintenance,
             ]);
+            $this->reset(['last_maintenance_date', 'next_maintenance']);
            
         }
         

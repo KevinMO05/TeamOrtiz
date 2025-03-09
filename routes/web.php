@@ -17,6 +17,7 @@ use App\Livewire\EditSupplements;
 use App\Livewire\EditSuppliers;
 use App\Livewire\RenewalMembership;
 use App\Livewire\ShowClients;
+use App\Livewire\ShowEmployees;
 use App\Livewire\ShowMachines;
 use App\Livewire\ShowSuppliers;
 use App\Livewire\Supplements;
@@ -62,6 +63,9 @@ Route::get('/machines/create', CreateMachine::class)->name('machines.create');
 Route::get('/machines/edit/{id}', EditMachine::class)->name('machines.edit');
 Route::get('/machines/{id}/add-code', AddCodeMachine::class)->name('machines.add-code');
 Route::get('/machines/{id}/maintenance/{code}', AddMaintenanceMachine::class)->name('machines.maintenance');
+
+// Rutas para empleados
+Route::get('/employees', ShowEmployees::class)->name('employees');
 
 Route::post('/login-register', [LoginController::class, 'register'])->name('register_login');
 
