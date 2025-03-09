@@ -94,7 +94,7 @@
 
                                     <td class="py-2 border-b">
                                         <div class="px-4 py-4 text-md text-gray-500 text-center ">
-                                            <a href="{{ route('machines.maintenance', ['id' => $machine, 'code' => $item->id]) }}"
+                                            <a href="{{ route('machines.maintenance', ['id' => $machine->id, 'code' => $item->id]) }}"
                                             class="px-3 py-2 mt-2 mb-2 mr-2 text-md text-center text-green-600 bg-green-100 rounded-md">
                                             Registrar Mantenimiento
                                             </a>

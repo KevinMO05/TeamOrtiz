@@ -12,9 +12,9 @@ class AddMaintenanceMachine extends Component
     public $machine, $code, $name, $items, $last_maintenance_date, $next_maintenance;
     public function mount(Machine $id, MachineCode $code)
     {
-        $this->machine = Machine::find($id)->first();
+        $this->machine = $id;
         $this->name = $this->machine->name;
-        $this->code = MachineCode::find($code)->first();
+        $this->code = $code;
         $this->items = MaintenanceMachine::where('machine_code_id', $this->code->id)->get();
         
 
