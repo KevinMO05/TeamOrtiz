@@ -99,6 +99,7 @@
                                             Registrar Mantenimiento
                                             </a>
                                     </div>
+                                </td>
                                         
                             @endforeach
                         </tbody>

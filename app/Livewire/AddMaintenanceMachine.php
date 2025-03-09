@@ -16,6 +16,8 @@ class AddMaintenanceMachine extends Component
         $this->name = $this->machine->name;
         $this->code = MachineCode::find($code)->first();
         $this->items = MaintenanceMachine::where('machine_code_id', $this->code->id)->get();
+        
+
     }
     public function render()
     {
@@ -24,10 +26,33 @@ class AddMaintenanceMachine extends Component
     }
 
     public function save(){
-        MaintenanceMachine::create([
-            'machine_code_id' => $this->code->id,
-            'last_maintenance_date' => $this->last_maintenance_date,
-            'next_maintenance' => $this->next_maintenance,
-        ]);
+        if(!(MaintenanceMachine::where('machine_code_id', $this->code->id)->count()>1)){
+            MaintenanceMachine::create([
+                'machine_code_id' => $this->code->id,
+                'last_maintenance_date' => $this->last_maintenance_date,
+                'next_maintenance' => $this->next_maintenance,
+            ]);
+        }else{
+            
+            $previous_date_next = MaintenanceMachine::where('machine_code_id', $this->code->id)->orderBy('id', 'desc')
+            ->take(1) 
+            ->first();
+            
+            $this->validate([
+                'last_maintenance_date' => 'required|after_or_equal:'.$previous_date_next->next_maintenance,
+                'next_maintenance' => 'required|after:last_maintenance_date',
+            ], [
+                'last_maintenance_date.after_or_equal' => 'La fecha de último mantenimiento debe ser posterior o igual a la fecha de próximo mantenimiento anterior',
+                'next_maintenance.after' => 'La fecha de próximo mantenimiento debe ser posterior a la fecha de último mantenimiento',
+            ]);
+
+            MaintenanceMachine::create([
+                'machine_code_id' => $this->code->id,
+                'last_maintenance_date' => $this->last_maintenance_date,
+                'next_maintenance' => $this->next_maintenance,
+            ]);
+           
+        }
+        
     }
 }
