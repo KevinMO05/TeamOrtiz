@@ -13,7 +13,7 @@
                 <x-table-responsive>
                     <div class="px-6 py-4">
                         <x-input type="text" wire:model.live="search" class="w-full text-md"
-                            placeholder="Ingrese el nombre del respuesto que quiere buscar" />
+                            placeholder="Ingrese el nombre del suplemento que quiere buscar" />
                     </div>
 
                     @if ($supplements->count())

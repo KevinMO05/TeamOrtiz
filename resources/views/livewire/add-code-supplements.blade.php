@@ -79,7 +79,7 @@
 
                 <div class="px-6 py-4">
                     <x-input type="text" wire:model.live="search" class="w-full"
-                        placeholder="Ingrese el codigo de serie del item que quiere buscar" />
+                        placeholder="Ingrese el codigo de serie del suplemento que quiere buscar" />
                 </div>
 
                 @if ($items->count())

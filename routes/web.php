@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 use Spatie\Permission\Commands\Show;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 //Rutas para clientes y membresias
 Route::middleware(['auth','web', 'role:recepcionista|admin'])->group(function () {

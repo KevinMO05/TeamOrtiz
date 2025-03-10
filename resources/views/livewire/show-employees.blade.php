@@ -12,7 +12,7 @@
                 <x-table-responsive>
                     <div class="px-6 py-4">
                         <x-input type="text" wire:model.live="search" class="w-full text-md"
-                            placeholder="Ingrese el nombre del usuario que desea buscar" />
+                            placeholder="Ingrese el nombre del empleado que desea buscar" />
                     </div>
                     @if (count($employees))
                         <table class="min-w-full divide-y divide-gray-200 ">

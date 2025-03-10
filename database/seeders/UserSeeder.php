@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
         $role = Role::create(['name' => 'inhabilitar']);
         
         User::factory()->create([
+            'name' => 'Dalexandro Ponce',
             'email' => 'dalex@gmail.com',
             'password' => Hash::make('12345678'),
         ])->assignRole('admin');
