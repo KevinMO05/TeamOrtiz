@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -12,6 +13,9 @@ use function Pest\Laravel\json;
 
 class LoginController extends Controller
 {
+    public function index(){
+        return view('auth.register');
+    }
     public function register(Request $request)
     {
         // Validar los datos
@@ -26,6 +30,7 @@ class LoginController extends Controller
                 'string',
                 'min:8',
             ],
+            'horary' => 'required',
         ]);
 
         // Comprobar si la validación falla
@@ -64,6 +69,15 @@ class LoginController extends Controller
                 'phone' => $request->phone,
                 'password' => bcrypt($request->password), // Encriptar la contraseña
 
+            ])->assignRole('recepcionista');
+
+            $user = User::where('dni', $request->dni)->first();
+
+            
+
+            Employee::create([
+                'user_id' => $user->id,
+                'horary' => $request->horary
             ]);
 
             return redirect()->route('login')->with('success', 'Usuario registrado exitosamente');

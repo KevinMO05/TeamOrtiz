@@ -18,6 +18,24 @@ class ShowEmployees extends Component
                                ->orWhere('email', 'LIKE', '%' . $this->search . '%');
                   });
         })->paginate(10);
+        
         return view('livewire.show-employees', compact('employees'))->layout('layouts.app');
+    }
+
+    public function assignRole(Employee $employee, $value){
+
+        if($value == '1'){
+            $employee->user->removeRole('recepcionista');
+            $employee->user->assignRole('admin');
+            $employee->user->removeRole('inhabilitar');
+        }elseif($value == '2'){
+            $employee->user->removeRole('admin');
+            $employee->user->assignRole('recepcionista');
+            $employee->user->removeRole('inhabilitar');
+        }elseif($value == '3'){
+            $employee->user->removeRole('recepcionista');
+            $employee->user->removeRole('admin');
+            $employee->user->assignRole('inhabilitar');
+        }
     }
 }

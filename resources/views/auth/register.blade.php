@@ -4,7 +4,7 @@
         <x-slot name="logo">
             <img src="{{ asset('img/best_gym.svg') }}" alt="" width="600px">
         </x-slot>
-        <h2 class=" text-5xl  font-bold text-blue-950 mb-6 mt-5 ">Registrar Usuario</h2>
+        <h2 class=" text-4xl  font-bold text-blue-950 mb-6 mt-5 ">Registrar Empleado</h2>
 
 
         <x-validation-errors class="mb-4" />
@@ -105,38 +105,24 @@
                     name="password_confirmation" required autocomplete="new-password" />
             </div>
 
-            <!-- Términos y condiciones (opcional) -->
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="col-span-2">
-                    <x-label for="terms">
-                        <div class="flex items-center">
-                            <x-checkbox name="terms" id="terms" required />
-                            <div class="ml-2">
-                                {!! __('Acepto los :Terminos de Servicio y :Politicas de Privacidad', [
-                                    'Terminos de Servicio' =>
-                                        '<a target="_blank" href="' .
-                                        route('terms.show') .
-                                        '" class="underline text-sm text-gray-600 hover:text-gray-900 ">' .
-                                        __('Términos de Servicio') .
-                                        '</a>',
-                                    'Politicas de Privacidad' =>
-                                        '<a target="_blank" href="' .
-                                        route('policy.show') .
-                                        '" class="underline text-sm text-gray-600 hover:text-gray-900 ">' .
-                                        __('Políticas de Privacidad') .
-                                        '</a>',
-                                ]) !!}
-                            </div>
-                        </div>
-                    </x-label>
-                </div>
-            @endif
+            <!-- Campo Teléfono -->
+            <div class="col-span-2">
+                <x-label value="Turno de trabajo" class="text-sm" />
+                <select name="horary"  id=""
+                    class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm text-gray-500 w-full form-control text-md">
+                    <option value="" selected disabled>Seleccione el turno de trabajo</option>
+                    <option value="Diurno" >Diurno</option>
+                    <option value="Nocturno" >Nocturno</option>
+                </select>
+                <x-input-error for="supplier_id" class="mt-2" />
+            </div>
+            
 
             <!-- Botón y enlace -->
             <div class="col-span-2 flex justify-between items-center">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     href="{{ route('login') }}">
-                    {{ __('¿Ya tienes una cuenta?') }}
+                    
                 </a>
                 <x-button class="ml-4">
                     {{ __('Registrarse') }}

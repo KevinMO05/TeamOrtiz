@@ -19,6 +19,8 @@ class ShowClients extends Component
         $clients = Client::whereHas('user', function ($query) {
             $query->where('name', 'like', '%' . $this->search . '%');
         })->paginate(10);
+
+        
         return view('livewire.show-clients', compact('clients'))->layout('layouts.app');
     }
 }

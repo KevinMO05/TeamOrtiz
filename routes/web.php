@@ -68,6 +68,7 @@ Route::get('/machines/{id}/maintenance/{code}', AddMaintenanceMachine::class)->n
 Route::get('/employees', ShowEmployees::class)->name('employees');
 
 Route::post('/login-register', [LoginController::class, 'register'])->name('register_login');
+Route::get('/login-register', [LoginController::class, 'index'])->name('login_register');
 
 
 Route::middleware([

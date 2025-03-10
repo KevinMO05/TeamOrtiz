@@ -17,9 +17,10 @@ class UserSeeder extends Seeder
     {
         $role = Role::create(['name' => 'admin']);
         $role = Role::create(['name' => 'recepcionista']);
+        $role = Role::create(['name' => 'inhabilitar']);
         
         User::factory()->create([
-            'email' => 'admin@admin.com',
+            'email' => 'dalex@gmail.com',
             'password' => Hash::make('12345678'),
         ])->assignRole('admin');
     }
