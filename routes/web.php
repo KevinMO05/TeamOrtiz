@@ -31,41 +31,41 @@ Route::get('/', function () {
     return view('welcome');
 });
 //Rutas para clientes y membresias
-Route::get('/clients', ShowClients::class)->name('clients');
-
-Route::get('/clients/create', CreateClient::class)->name('clients.create');
-
-Route::get('/clients/edit/{id}', EditClient::class)->name('clients.edit');
-
-Route::get('/clients/renewal/{id}', RenewalMembership::class)->name('clients.renewal');
-
-Route::get('/clients/change-plan/{id}', ChangePlan::class)->name('clients.change-plan');
+Route::middleware(['auth','web', 'role:recepcionista|admin'])->group(function () {
+    Route::get('/clients', ShowClients::class)->name('clients');
+    Route::get('/clients/create', CreateClient::class)->name('clients.create');
+    Route::get('/clients/edit/{id}', EditClient::class)->name('clients.edit');
+    Route::get('/clients/renewal/{id}', RenewalMembership::class)->name('clients.renewal');
+    Route::get('/clients/change-plan/{id}', ChangePlan::class)->name('clients.change-plan');
+});
 
 // Rutas para suplementos
+Route::middleware(['auth','web', 'role:admin'])->group(function () {
+    // Rutas para Suplementos
+    Route::get('/supplements', Supplements::class)->name('supplements');
+    Route::get('/supplements/brands', SupplementsBrands::class)->name('supplements.brands');
+    Route::get('/supplements/brands/create', CreateBrand::class)->name('supplements.brands.create');
+    Route::get('/supplements/brands/edit/{id}', EditBrand::class)->name('supplements.brands.edit');
+    Route::get('/supplements/suppliers', ShowSuppliers::class)->name('supplements.suppliers');
+    Route::get('/supplements/suppliers/create', CreateSuppliers::class)->name('supplements.suppliers.create');
+    Route::get('/supplements/suppliers/edit/{id}', EditSuppliers::class)->name('supplements.suppliers.edit');
+    Route::get('/supplements/create', CreateSupplement::class)->name('supplements.create');
+    Route::get('/suppements/edit/{id}', EditSupplements::class)->name('supplements.edit');
+    Route::get('/supplements/{id}/add-code', AddCodeSupplements::class)->name('supplements.add-code');
+    Route::get('/supplements/{id}/edit-code/{code}', UpdateStatusItem::class)->name('supplements.edit-code');
 
-Route::get('/supplements', Supplements::class)->name('supplements');
-Route::get('/supplements/brands', SupplementsBrands::class)->name('supplements.brands');
-Route::get('/supplements/brands/create', CreateBrand::class)->name('supplements.brands.create');
-Route::get('/supplements/brands/edit/{id}', EditBrand::class)->name('supplements.brands.edit');
-Route::get('/supplements/suppliers', ShowSuppliers::class)->name('supplements.suppliers');
-Route::get('/supplements/suppliers/create', CreateSuppliers::class)->name('supplements.suppliers.create');
-Route::get('/supplements/suppliers/edit/{id}', EditSuppliers::class)->name('supplements.suppliers.edit');
-Route::get('/supplements/create', CreateSupplement::class)->name('supplements.create');
-Route::get('/suppements/edit/{id}', EditSupplements::class)->name('supplements.edit');
-Route::get('/supplements/{id}/add-code', AddCodeSupplements::class)->name('supplements.add-code');
-Route::get('/supplements/{id}/edit-code/{code}', UpdateStatusItem::class)->name('supplements.edit-code');
+    // Rutas para Maquinas
+    Route::get('/machines', ShowMachines::class)->name('machines');
+    Route::get('/machines/create', CreateMachine::class)->name('machines.create');
+    Route::get('/machines/edit/{id}', EditMachine::class)->name('machines.edit');
+    Route::get('/machines/{id}/add-code', AddCodeMachine::class)->name('machines.add-code');
+    Route::get('/machines/{id}/maintenance/{code}', AddMaintenanceMachine::class)->name('machines.maintenance');
+
+    // Rutas para empleados
+    Route::get('/employees', ShowEmployees::class)->name('employees');
+});
 
 
-
-// Rutas para Maquinas
-Route::get('/machines', ShowMachines::class)->name('machines');
-Route::get('/machines/create', CreateMachine::class)->name('machines.create');
-Route::get('/machines/edit/{id}', EditMachine::class)->name('machines.edit');
-Route::get('/machines/{id}/add-code', AddCodeMachine::class)->name('machines.add-code');
-Route::get('/machines/{id}/maintenance/{code}', AddMaintenanceMachine::class)->name('machines.maintenance');
-
-// Rutas para empleados
-Route::get('/employees', ShowEmployees::class)->name('employees');
 
 Route::post('/login-register', [LoginController::class, 'register'])->name('register_login');
 Route::get('/login-register', [LoginController::class, 'index'])->name('login_register');
